@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Web Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <div class="intro">
+            <img src="https://media.licdn.com/dms/image/D4D03AQEhCOCutDGpsA/profile-displayphoto-shrink_200_200/0/1707581508465?e=2147483647&v=beta&t=AS3w79-1tZsVvGHtVgpIrwQKsLkT3fPBhi3P_kHmvaw"
+                alt="Your Name" class="profile-photo">
+            <h1>Hi, I'm Sharvari Dani</h1>
+            <p>I'm a passionate web developer with expertise in creating modern, responsive, and user-friendly websites
+                and applications.</p>
+        </div>
+    </section>
+    <section id="about">
+        <div class="container">
+
+            <h2>About Me</h2>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_-MQxdkdbc2CIRfmqEWX5E6x6ZTO6P41piQ&s"
+                alt="About ME">
+            <p>As a third-year B.Tech student specializing in Electronics and Telecommunication Engineering at K.J.
+                Somaiya Institute
+                of Technology, I am passionate about leveraging technology to solve real-world problems. My academic
+                journey has
+                equipped me with a solid foundation in key areas such as digital communication, signal processing, and
+                microelectronics.
+                I am actively developing my skills in web development.I am a dedicated and enthusiastic individual,
+                committed to pursuing excellence in everything I undertake. My primary
+                focus is on advancing my career in Electronics and Telecommunication Engineering (EXTC), where I am
+                eager to apply my
+                skills and knowledge to innovate and make meaningful contributions to the field. Alongside my
+                professional aspirations,
+                I am also a passionate singer. Music has always been a significant part of my life, and I continually
+                strive to enhance
+                my vocal talents and explore opportunities within the music industry. Balancing my technical career with
+                my love for
+                singing allows me to express my creativity and connect with others on multiple levels.
+            </p>
+
+            <h3>Education</h3>
+            <img src="https://pbl5-kjsieit.web.app/logo.jpg" alt="Education">
+            <p> •Third-Year B.Tech in EXTC at K.J. Somaiya Institute of Technology<br>•HSC from Babasaheb Utangle Junior
+                College with 85%<br>•SSC from Murtizapur Highschool Murtizapur with 97.20%
+            </p>
+
+        </div>
+    </section>
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ21J3-WHf675Nz_mvKZ1dFRC50UpsJzpIQlg&s"
+                alt="Projects">
+            <p>•Seed sowing mechanism from arduino for the drone<br>•Home Automation System using Rasberry pi
+                pico<br>•E-commerce website</p>
+        </div>
+    </section>
+    <section id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>Node.js</li>
+                <li>Git</li>
+                <li>Responsive Design</li>
+            </ul>
+        </div>
+    </section>
+    <section id="contact">
+
+        <div class="container">
+            <h2>Contact</h2>
+            <img src="https://img.freepik.com/premium-vector/contact-us-concept-2-colored-icon-simple-blue-element-illustration-contact-us-concept-symbol-design-can-be-used-web-mobile-ui-ux_159242-4168.jpg"
+                alt="Contact">
+            <form action="https://formspree.io/YOUREMAIL" method="POST">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+            <div class="social-links">
+                <a href="https://github.com/sharvaridani" target="_blank">GitHub <i class='bx bxl-github'></i></a>
+                <a href="https://www.linkedin.com/in/sharvari-dani-848a14285/" target="_blank">LinkedIn <i
+                        class='bx bxl-linkedin-square'></i> </a>
+                <a href="https://www.instagram.com/sharv_ari59/" target="_blank">Instagram <i
+                        class='bx bxl-instagram'></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript code -->
+    <script>
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Contact Form Submission
+        document.querySelector('form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                form.reset();
+                alert('Thank you for your message!');
+            } else {
+                alert('There was a problem submitting your form. Please try again.');
+            }
+        });
+
+        // Dynamic Project Loading
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('projects.json')
+                .then(response => response.json())
+                .then(projects => {
+                    const projectsContainer = document.querySelector('#projects .container');
+                    projects.forEach(project => {
+                        const projectElement = document.createElement('div');
+                        projectElement.classList.add('project');
+                        projectElement.innerHTML = `
+                            <h3>${project.title}</h3>
+                            <p>${project.description}</p>
+                            <p><strong>Technologies used:</strong> ${project.technologies.join(', ')}</p>
+                            <a href="${project.liveDemo}" target="_blank">Live Demo</a>
+                            <a href="${project.githubRepo}" target="_blank">GitHub Repo</a>
+                        `;
+                        projectsContainer.appendChild(projectElement);
+                    });
+                })
+                .catch(error => console.error('Error loading projects:', error));
+        });
+    </script>
+</body>
+
+</html>
